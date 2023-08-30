@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { SkillList } from '../skills'
 import { MediaButton } from '../buttons'
 import { DownloadIcon, GitHubIcon, LinkedInIcon } from '@/icons'
+import { TypeAndDelete } from '../texts'
 
 export const Home = (): React.ReactNode => {
   return (
@@ -21,7 +22,7 @@ export const Home = (): React.ReactNode => {
       <div className='w-full mt-24 mb-14 px-page'>
         <div className='flex flex-col gap-4'>
           <h1 className='text-5xl sm:text-6xl'>Rafael Carvacho</h1>
-          {/* Typewriter */}
+          <TypeAndDelete texts={['Software Developer.', 'Web Developer.', 'Gamer.']} style='text-2xl sm:text-3xl italic text-text-focus' />
         </div>
 
         <div className='mt-16 p-4 w-full max-w-[450px] bg-skill-bg rounded-2xl shadow-skill-box'>
