@@ -41,7 +41,7 @@ const config: Config = {
           html: '#f97316',
           css: '#3b82f6',
           js: '#facc15',
-          python: '#3b82f6',
+          ts: '#3b82f6',
           mysql: '#3b82f6',
           mongo: '#4ade80',
           graphql: '#ec4899',

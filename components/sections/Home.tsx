@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { SkillList } from '../skills'
 
 export const Home = (): React.ReactNode => {
   return (
@@ -23,7 +24,7 @@ export const Home = (): React.ReactNode => {
 
         <div className='mt-16 p-4 w-full max-w-[450px] bg-skill-bg rounded-2xl shadow-skill-box'>
           <h2 className='text-2xl'>Skill Set</h2>
-          {/* Skill List */}
+          <SkillList />
         </div>
 
         <div className='flex flex-wrap gap-4 mt-12'>
