@@ -27,6 +27,12 @@ const config: Config = {
         card: {
           outline: '#c0c0c088'
         },
+        component: {
+          bg: '#211f1f',
+          hover: '#3e3e3eaa',
+          focus: '#805ad599',
+          divider: '#353535'
+        },
         calendar: {
           0: '#2d2d2dab',
           1: '#433853',
@@ -55,7 +61,8 @@ const config: Config = {
         body: '6.75rem'
       },
       maxWidth: {
-        'page-container': '1500px'
+        'page-container': '1500px',
+        'nav-container': '1500px'
       },
       boxShadow: {
         btn: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)',
