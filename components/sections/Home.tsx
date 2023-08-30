@@ -9,7 +9,7 @@ export const Home = (): React.ReactNode => {
       {/* LOGO */}
       <div className='flex justify-center'>
         <div className='flex items-center gap-2 h-13'>
-          <Image src='/logo.svg' alt='logo' width={80} height={50} priority />
+          <Image src='/logo.svg' alt='logo' width={72} height={45} priority />
           <span className='hidden sm:flex flex-col justify-center'>
             <span className='text-2xl font-medium leading-none'>Rafael</span>
             <span className='text-2xl font-medium leading-none'>Carvacho</span>
