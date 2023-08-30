@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
 interface SkillBadgeProps {
   code: string
   name: string

@@ -1,3 +1,4 @@
+import { GithubCalendar } from '../projects'
 
 export const Projects = (): React.ReactNode => {
   return (
@@ -7,7 +8,7 @@ export const Projects = (): React.ReactNode => {
         <div className='flex flex-col justify-between min-h-[100vh]'>
           {/* Projects List */}
 
-          {/* Github Calendar */}
+          <GithubCalendar />
         </div>
       </div>
     </section>
