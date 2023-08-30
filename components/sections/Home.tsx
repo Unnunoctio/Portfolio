@@ -19,7 +19,7 @@ export const Home = (): React.ReactNode => {
       </div>
 
       {/* BODY */}
-      <div className='w-full mt-24 mb-14 px-page'>
+      <div className='w-full mt-24 pb-14 px-page'>
         <div className='flex flex-col gap-4'>
           <h1 className='text-5xl sm:text-6xl'>Rafael Carvacho</h1>
           <TypeAndDelete texts={['Software Developer.', 'Web Developer.', 'Gamer.']} style='text-2xl sm:text-3xl italic text-text-focus' />
