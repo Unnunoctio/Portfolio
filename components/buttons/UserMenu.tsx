@@ -4,7 +4,7 @@
 import { UserIcon } from '@/icons'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import { AboutMe, ContactMe } from '../views'
+import { AboutMe, ContactMe, Resume } from '../views'
 
 export const UserMenu = (): React.ReactNode => {
   const menuItems = [
@@ -54,6 +54,7 @@ export const UserMenu = (): React.ReactNode => {
       </Menu>
 
       {view === 'about-me' && <AboutMe onResetView={onResetView} />}
+      {view === 'resume' && <Resume onResetView={onResetView} />}
       {view === 'contact-me' && <ContactMe onResetView={onResetView} />}
     </>
   )
