@@ -66,7 +66,22 @@ const config: Config = {
       },
       boxShadow: {
         btn: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)',
-        'skill-box': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)'
+        'skill-box': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)',
+        card: '0px 16px 60px 4px rgba(128,90,213,0.3)'
+      },
+      keyframes: {
+        'card-shadow-pulse': {
+          '0%, 100%': { boxShadow: '0px 16px 60px 4px rgba(128,90,213,0.3)' },
+          '50%': { boxShadow: '0px 16px 60px 20px rgba(128,90,213,0.7)' }
+        },
+        'card-pulse': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.025)' }
+        }
+      },
+      animation: {
+        'card-shadow-pulse': 'card-shadow-pulse 300ms ease-in-out',
+        'card-pulse': 'card-pulse 300ms ease-in-out'
       }
     }
   },
