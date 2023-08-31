@@ -1,4 +1,4 @@
-import { GithubCalendar } from '../projects'
+import { GithubCalendar, ProjectList } from '../projects'
 
 export const Projects = (): React.ReactNode => {
   return (
@@ -6,7 +6,7 @@ export const Projects = (): React.ReactNode => {
       <div className='w-full mt-24 pb-14 px-page max-w-page-container'>
         <h2 className='text-5xl'>All Projects</h2>
         <div className='flex flex-col justify-between min-h-[100vh]'>
-          {/* Projects List */}
+          <ProjectList />
 
           <GithubCalendar />
         </div>
