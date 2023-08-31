@@ -11,7 +11,7 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as='div' className='relative z-10' onClose={onClose}>
+      <Dialog as='div' className='relative z-50' onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -35,7 +35,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
             >
-              <Dialog.Panel className='relative overflow-hidden z-30 py-4 sm:py-8 md:py-12 px-4 sm:px-8 md:px-12 w-full max-w-6xl bg-red-500 rounded-lg shadow-xl transition-transform transform'>
+              <Dialog.Panel className='relative overflow-hidden z-30 py-4 sm:py-8 md:py-12 px-4 sm:px-8 md:px-12 w-full max-w-6xl text-text-main bg-bg-modal rounded-lg shadow-xl transition-transform transform'>
                 <button
                   onClick={onClose}
                   className='group absolute top-3 sm:top-4 right-3 sm:right-4 flex justify-center p-1.5 bg-button-bg rounded-md transition-colors hover:bg-button-hover'
