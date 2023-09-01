@@ -1,0 +1,7 @@
+export * from './DownloadIcon'
+export * from './EducationIcon'
+export * from './GitHubIcon'
+export * from './LinkedInIcon'
+export * from './UserIcon'
+export * from './WorkIcon'
+export * from './XMarkIcon'

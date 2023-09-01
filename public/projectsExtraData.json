@@ -1,0 +1,30 @@
+[
+  {
+    "idGithub": 675419361,
+    "order": 1,
+    "title": "Rincón del Curao",
+    "skillsCode": ["react", "ts", "node", "graphql", "mongo"],
+    "image": "/projects/rincon_del_curao.png"
+  },
+  {
+    "idGithub": 650378667,
+    "order": 2,
+    "title": "Drinks API",
+    "skillsCode": ["node", "mongo", "api"],
+    "image": "/projects/drinks_api.png"
+  },
+  {
+    "idGithub": 684913852,
+    "order": 4,
+    "title": "Portfolio",
+    "skillsCode": ["react", "ts"],
+    "image": "/projects/portfolio.png"
+  },
+  {
+    "idGithub": 671492867,
+    "order": 3,
+    "title": "GitHub Calendar JSON",
+    "skillsCode": ["node", "js"],
+    "image": "/projects/github_calendar.png"
+  }
+]
