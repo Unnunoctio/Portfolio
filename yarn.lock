@@ -1159,10 +1159,10 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-github-calendar-json@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/github-calendar-json/-/github-calendar-json-2.0.0.tgz#953de75b3e32084be3df230bef34e74f0537410d"
-  integrity sha512-eg3/fyQSC+Rx4j2mZdiPSYY8vM7F4npfYIzZd39wG4XmufQ8DEveDD9lCw4RkfNwntECh6bgpaaD/6OGTcNI+Q==
+github-calendar-json@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/github-calendar-json/-/github-calendar-json-2.1.0.tgz#70c0eb96dd40a5b77499158c92e34025b69797c4"
+  integrity sha512-r5qPebEu2kYFZLDmuSEUkgxRhld9nh90QpwDNSd7IK7b5UvLVEl1JV0rGtL4k+vK3xNtwn20vyLq6wjOA8OvnQ==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
