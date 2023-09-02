@@ -16,8 +16,6 @@ const getHeaderMonths = (months: string[]): HeaderMonth[] => {
     return acc
   }, [])
 
-  console.log(headers)
-
   return headers
 }
 

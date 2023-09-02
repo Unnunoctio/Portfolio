@@ -8,7 +8,7 @@ interface IGithub {
   watchers: number
 }
 
-interface ProjectCardProps {
+interface IProject {
   order: number
   id: number
   title: string
@@ -19,7 +19,10 @@ interface ProjectCardProps {
   image: string
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ order, id, title, website, github, skillsCode, description, image }): React.ReactNode => {
+// export const ProjectCard = ({ order, id, title, website, github, skillsCode, description, image }): React.ReactNode => {
+export const ProjectCard = ({ project }: { project: IProject }): React.ReactNode => {
+  const { image, title, id } = project
+
   return (
     <section className='card group relative w-full max-w-[400px] cursor-pointer'>
       <div className='absolute inset-0 w-full h-[250px] rounded-full transition-all duration-300 group-hover:shadow-card group-hover:animate-card-pulse group-hover:animate-card-shadow-pulse' />

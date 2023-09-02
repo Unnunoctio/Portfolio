@@ -55,7 +55,7 @@ export const ProjectList = async () => {
     <ul className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16'>
       {projects.map((project) => (
         <li key={project.id} className='flex justify-center'>
-          <ProjectCard {...project} />
+          <ProjectCard project={project} />
         </li>
       ))}
     </ul>
