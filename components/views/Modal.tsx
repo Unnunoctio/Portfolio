@@ -37,6 +37,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
             >
               <Dialog.Panel className='relative overflow-hidden z-30 py-4 sm:py-8 md:py-12 px-4 sm:px-8 md:px-12 w-full max-w-6xl text-text-main bg-bg-modal rounded-lg shadow-xl transition-transform transform'>
                 <button
+                  aria-label='close-modal'
                   onClick={onClose}
                   className='group absolute top-3 sm:top-4 right-3 sm:right-4 flex justify-center p-1.5 bg-button-bg rounded-md transition-colors hover:bg-button-hover'
                 >

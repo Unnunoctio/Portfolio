@@ -31,7 +31,7 @@ const fetchProjects = async (): Promise<IProject[]> => {
       order: projectExtra?.order,
       id,
       title: projectExtra?.title,
-      website: homepage,
+      website: (homepage !== '' && homepage !== null) ? homepage : null,
       github: {
         url: htmlUrl,
         stars,

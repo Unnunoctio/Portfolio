@@ -21,7 +21,7 @@ export const UserMenu = (): React.ReactNode => {
   return (
     <>
       <Menu as='div' className='relative inline-block text-left'>
-        <Menu.Button className='group flex justify-center p-3 bg-button-bg rounded-2xl shadow-btn transition-colors hover:bg-button-hover aria-expanded:bg-button-hover'>
+        <Menu.Button aria-label='menu' className='group flex justify-center p-3 bg-button-bg rounded-2xl shadow-btn transition-colors hover:bg-button-hover aria-expanded:bg-button-hover'>
           <UserIcon style='h-7 w-7 fill-text-secondary transition-colors group-hover:fill-text-hover group-aria-expanded:fill-text-hover' />
         </Menu.Button>
 
