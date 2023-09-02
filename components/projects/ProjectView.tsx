@@ -34,24 +34,18 @@ interface ProjectViewProps {
 export const ProjectView: React.FC<ProjectViewProps> = ({ isOpen, onClose, project }) => {
   const { id, title, skillsCode, description, github, website } = project
 
-  const onViewClose = (): void => {
-    setTimeout(() => {
-      onClose()
-    }, 200)
-  }
-
   return (
-    <Modal isOpen={isOpen} onClose={onViewClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <div className='flex items-center gap-3'>
         <ProjectLogo logoId={id} style='hidden md:block fill-text-main' />
         <h2 className='text-3xl md:text-4xl font-medium text-center md:text-start w-full'>{title}</h2>
       </div>
-      <div className='flex flex-col justify-between gap-8 mt-8 min-h-[50vh]'>
+      <div className='flex flex-col justify-between gap-8 mt-8 md:mt-12 min-h-[50vh]'>
         <div className='flex flex-col gap-6'>
           {/* Skill set */}
           <div>
-            <h3 className='text-xl md:text-2xl'>Skill Set</h3>
-            <ul className='flex flex-wrap gap-3 py-2 '>
+            <h3 className='text-xl md:text-2xl font-medium'>Skill Set</h3>
+            <ul className='flex flex-wrap gap-3 py-2'>
               {skillsCode.map(code => skills.find(skill => skill.code === code)).map((skill, index) => (
                 <li key={index}>
                   <SkillBadge code={skill?.code as string} name={skill?.name as string} />
@@ -60,9 +54,9 @@ export const ProjectView: React.FC<ProjectViewProps> = ({ isOpen, onClose, proje
             </ul>
           </div>
           {/* Description */}
-          <div>
-            <h3 className='text-xl md:text-2xl'>Description</h3>
-            <p className='text-md'>{description}</p>
+          <div className='md:max-w-[60%]'>
+            <h3 className='text-xl md:text-2xl font-medium'>Description</h3>
+            <p className='text-md py-2'>{description}</p>
           </div>
         </div>
 

@@ -8,7 +8,8 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'Rafael Carvacho | Portfolio'
+  title: 'Rafael Carvacho | Portfolio',
+  description: 'Rafael Carvacho\'s portfolio website'
 }
 
 export default function RootLayout ({ children }: { children: React.ReactNode }): React.ReactNode {

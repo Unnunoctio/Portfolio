@@ -39,7 +39,7 @@ const fetchProjects = async (): Promise<IProject[]> => {
         watchers
       },
       skillsCode: projectExtra?.skillsCode,
-      description: '',
+      description: projectExtra?.description,
       image: projectExtra?.image
     }
   })
