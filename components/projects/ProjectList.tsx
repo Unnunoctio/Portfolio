@@ -20,7 +20,7 @@ interface IProject {
 }
 
 const fetchProjects = async (): Promise<IProject[]> => {
-  const response = await fetch(process.env.PUBLIC_GITHUB_REQUEST as string, { headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN as string}` } })
+  const response = await fetch(process.env.PUBLIC_GITHUB_REQUEST as string, { headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN as string}` }, cache: 'no-cache' })
   const data = await response.json()
 
   const projects: IProject[] = data.map((githubItem: any) => {
