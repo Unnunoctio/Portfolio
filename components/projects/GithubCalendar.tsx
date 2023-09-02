@@ -21,7 +21,7 @@ const getHeaderMonths = (months: string[]): HeaderMonth[] => {
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const GithubCalendar = async () => {
-  const contributions = await githubContributions('Unnunoctio')
+  const contributions = await githubContributions('Unnunoctio', { cache: 'no-cache' })
   const headerDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?.date.toLocaleString('es-US', { month: 'short' })) as string[])
 
