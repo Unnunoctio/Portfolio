@@ -78,12 +78,12 @@ export const ProjectView: React.FC<ProjectViewProps> = ({ isOpen, onClose, proje
           </div>
           {/* Links */}
           <div className='flex flex-row-reverse justify-around sm:justify-between pb-2 sm:pb-0 max-w-full sm:max-w-[200px] w-full'>
-            <MediaButton href={github.url} style='px-2.5 rounded-lg'>
+            <MediaButton href={github.url} ariaLabel={`${title} project repository`} style='px-2.5 rounded-lg'>
               <GitHubIcon style='w-7 h-7 fill-text-secondary' />
             </MediaButton>
 
             {website !== null && (
-              <MediaButton href={website} style='px-2.5 rounded-lg'>
+              <MediaButton href={website} ariaLabel={`${title} project website`} style='px-2.5 rounded-lg'>
                 <LinkIcon style='w-7 h-7 fill-text-secondary' />
               </MediaButton>
             )}

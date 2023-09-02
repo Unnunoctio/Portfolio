@@ -31,15 +31,15 @@ export const Home = (): React.ReactNode => {
         </div>
 
         <div className='flex flex-wrap gap-4 mt-12'>
-          <MediaButton href='https://github.com/Unnunoctio' style='group flex gap-2'>
+          <MediaButton href='https://github.com/Unnunoctio' ariaLabel='My GitHub' style='group flex gap-2'>
             <GitHubIcon style='w-7 h-7 fill-text-secondary transition-colors group-hover:fill-text-hover' />
             Github
           </MediaButton>
-          <MediaButton href='https://www.linkedin.com/in/rafael-carvacho-389515265' style='group flex gap-2'>
+          <MediaButton href='https://www.linkedin.com/in/rafael-carvacho-389515265' ariaLabel='My LinkedIn' style='group flex gap-2'>
             <LinkedInIcon style='w-7 h-7 fill-text-secondary transition-colors group-hover:fill-text-hover' />
             LinkedIn
           </MediaButton>
-          <MediaButton href='/rafael_carvacho_cv.pdf' style='group flex gap-2'>
+          <MediaButton href='/rafael_carvacho_cv.pdf' ariaLabel='My Resume' style='group flex gap-2'>
             <DownloadIcon style='w-7 h-7 fill-text-secondary transition-colors group-hover:fill-text-hover' />
             Download CV
           </MediaButton>
