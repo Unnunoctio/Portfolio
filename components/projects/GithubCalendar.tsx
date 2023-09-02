@@ -23,7 +23,7 @@ const getHeaderMonths = (months: string[]): HeaderMonth[] => {
 export const GithubCalendar = async () => {
   const contributions = await githubContributions('Unnunoctio', { cache: 'no-cache' })
   const headerDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?.date.toLocaleString('es-US', { month: 'short' })) as string[])
+  const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?.date.toLocaleString('en-US', { month: 'short' })) as string[])
 
   return (
     <section>
