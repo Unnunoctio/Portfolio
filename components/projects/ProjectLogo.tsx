@@ -68,7 +68,7 @@ const NPMLogo = ({ style }: { style: string }): React.ReactNode => {
 
 export const ProjectLogo = ({ logoId, style }: { logoId: number, style: string }): React.ReactNode => {
   if (logoId === 684913852) return <PortfolioLogo style={style} />
-  if (logoId === 650378667) return <DrinksLogo style={style} />
+  if (logoId === 687208812) return <DrinksLogo style={style} />
   if (logoId === 675419361) return <RDCLogo style={style} />
   if (logoId === 671492867) return <NPMLogo style={style} />
 }
