@@ -35,7 +35,7 @@ export const GithubCalendar = async () => {
                 <tr>
                   <td className='w-[30px]' />
                   {headerMonths.map((header, index) => (
-                    <td key={index} className='contribution-calendar-label' colSpan={header.cols}>
+                    <td key={index} className={`contribution-calendar-label ${header.cols === 1 ? 'hidden' : ''}`} colSpan={header.cols}>
                       <span className='text-[14px]'>{header.month}</span>
                     </td>
                   ))}
