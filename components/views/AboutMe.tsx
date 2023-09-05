@@ -24,7 +24,7 @@ export const AboutMe = ({ onResetView }: { onResetView: () => void }): React.Rea
       <div className='flex items-center mt-8 min-h-[50vh]'>
         <div className='flex flex-col lg:flex-row justify-between gap-8'>
           <div className='flex justify-center items-center'>
-            <Image src='/user.webp' alt='User' width={500} height={500} className='w-72 md:w-80 aspect-square object-cover rounded-full' />
+            <Image src='/user.jpg' alt='User' width={500} height={500} className='w-72 md:w-80 aspect-square object-cover rounded-full' />
           </div>
           <div className='flex flex-col gap-8 lg:max-w-[60%]'>
             <div>
