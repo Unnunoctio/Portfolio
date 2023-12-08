@@ -1,4 +1,9 @@
 ---
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import Navbar from '../components/Navbar.astro';
+
 interface Props {
 	title: string;
 }
@@ -16,7 +21,8 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="font-roboto text-text-primary bg-bg-primary flex justify-center py-4 sm:py-6 md:py-8 lg:py-10">
+		<Navbar />
 		<slot />
 	</body>
 </html>

@@ -1,9 +1,55 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+import TypeAndDelete from '../components/TypeAndDelete.astro';
+import mySkills from '../../public/mySkills.json';
+import SkillBadge from '../components/SkillBadge.astro';
+import MediaButton from '../components/MediaButton.astro';
+import GithubIcon from '../icons/GithubIcon.astro';
+import LinkedInIcon from '../icons/LinkedInIcon.astro';
+import DownloadIcon from '../icons/DownloadIcon.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1 class="text-red-500">Este es un titulo</h1>
+<Layout title="Rafael Carvacho | Portfolio">
+	<main class="w-full flex flex-col items-center">
+		<section id="home" class="pb-14 w-full max-w-nav px-4 sm:px-6 md:px-8 lg:px-[6.75rem]">
+			<Logo />
+
+			<div class="flex flex-col gap-4 mt-24">
+				<h1 class="text-5xl sm:text-6xl">Rafael Carvacho</h1>
+				<TypeAndDelete />
+			</div>
+
+			<div class="mt-16 p-4 w-full max-w-[420px] bg-bg-skills rounded-2xl shadow-skills">
+				<h2 class="text-2xl">Skill Set</h2>
+				<ul class="flex flex-wrap gap-3 mt-4">
+					{mySkills.map((skill) => (
+						<li>
+							<SkillBadge {...skill} />
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<div class="flex flex-wrap gap-4 mt-12">
+				<MediaButton href="https://github.com/Unnunoctio" ariaLabel="My Github" style="group flex gap-2">
+					<GithubIcon style="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-hover-text" />
+					Github
+				</MediaButton>
+				<MediaButton href="https://www.linkedin.com/in/rafael-carvacho-389515265" ariaLabel="My LinkedIn" style="group flex gap-2">
+					<LinkedInIcon style="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-hover-text" />
+					LinkedIn
+				</MediaButton>
+				<MediaButton href="/rafael_carvacho_cv.pdf" ariaLabel="My Resume" style="group flex gap-2">
+					<DownloadIcon style="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-hover-text" />
+					Download CV
+				</MediaButton>
+			</div>
+		</section>
+		<section id="projects" class="w-full bg-bg-secondary min-h-[80vh]">
+			<div class="w-full max-w-nav px-4 sm:px-6 md:px-8 lg:px-[6.75rem]">
+
+			</div>
+		</section>
 	</main>
 </Layout>
