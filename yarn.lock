@@ -447,7 +447,7 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.8.tgz#c8285183dbdb17008578dbacb6e22748709b4822"
   integrity sha512-bfZ0cQ1uZs2PqpulNL5j/3w+GDhP36k1K5c38QdQg+Swy51jFZWWeIkteNsufkQxp986wnqRRsb/bHbY1WQ7TA==
 
-"@fontsource/roboto@^5.0.8":
+"@fontsource/roboto@5.0.8":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-5.0.8.tgz#613b477a56f21b5705db1a67e995c033ef317f76"
   integrity sha512-XxPltXs5R31D6UZeLIV1td3wTXU3jzd3f2DLsXI8tytMGBkIsGcc9sIyiupRtA8y73HAhuSCeweOoBqf6DbWCA==
@@ -1519,6 +1519,11 @@ get-stream@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-8.0.1.tgz#def9dfd71742cd7754a7761ed43749a27d02eca2"
   integrity sha512-VaUJspBffn/LMCJVoMvSAdmscJyS1auj5Zulnn5UoYcY531UWmdwhRWkcGKnGU93m5HSXP9LP2usOryrBtQowA==
+
+github-calendar-json@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/github-calendar-json/-/github-calendar-json-2.2.0.tgz#be1642652ceeebfc69859c1aa313181479cff613"
+  integrity sha512-s/KxOFy5uEFlA9mkuM91YS53XWocCkzi8NaiIsoYtpkEmkcfJeDm8mFwD4MeB0eLzN7Vaotg/vwzXC/0jSF45Q==
 
 github-from-package@0.0.0:
   version "0.0.0"
@@ -3497,7 +3502,7 @@ typescript@5.3.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
   integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
 
-typewriter-effect@^2.21.0:
+typewriter-effect@2.21.0:
   version "2.21.0"
   resolved "https://registry.yarnpkg.com/typewriter-effect/-/typewriter-effect-2.21.0.tgz#7150f12fd2c188248ab2b2b031f77c0663d24c54"
   integrity sha512-Y3VL1fuJpUBj0gS4OTXBLzy1gnYTYaBuVuuO99tGNyTkkub5CXi+b/hsV7Og9fp6HlhogOwWJwgq7iXI5sQlEg==
