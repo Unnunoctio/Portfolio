@@ -32,6 +32,14 @@ export default {
           pink: '#EC4899',
           purple: '#8B5CF6',
           white: '#F1F5F1'
+        },
+        calendar: {
+          0: '#2D2D2Dab',
+          1: '#433853',
+          2: '#58447C',
+          3: '#6C4Fa8',
+          4: '#8B5CF6',
+          border: 'rgba(255, 255, 255, 0.05)'
         }
       },
       spacing: {
