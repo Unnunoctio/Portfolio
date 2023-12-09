@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+export const prerender = false;
+
+const { project } = Astro.params;
+---
+
+<Layout title={`Rafael Carvacho | ${project}`}>
+  <h1>  {project}  </h1>
+</Layout>
