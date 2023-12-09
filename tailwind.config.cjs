@@ -11,15 +11,19 @@ export default {
           primary: '#1C1C1C',
           secondary: '#141212',
           skills: '#272727',
-          btn: '#2D2D2DAA'
+          btn: '#2D2D2DAA',
+          active: '#4e119d',
+          'active-light': '#8B5CF6'
         },
         hover: {
           btn: '#3E3E3EAA',
-          text: '#EFEFEF'
+          text: '#EFEFEF',
+          outline: '#C0C0C088'
         },
         text: {
           primary: '#F1F5F1',
           secondary: '#A5A5A5',
+          negative: '#000',
           active: '#805AD5',
         },
         skills: {
@@ -52,7 +56,22 @@ export default {
       },
       boxShadow: {
         skills: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)',
-        btn: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)'
+        btn: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1)',
+        card: '0px 16px 60px 4px rgba(128, 90, 213, 0.3)'
+      },
+      keyframes: {
+        'card-shadow-pulse': {
+          '0%, 100%': { boxShadow: '0px 16px 60px 4px rgba(128, 90, 213, 0.3)' }, 
+          '50%': { boxShadow: '0px 16px 60px 20px rgba(128, 90, 213, 0.7)' }, 
+        },
+        'card-pulse': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.03)' },
+        }
+      },
+      animation: {
+        'card-shadow-pulse': 'card-shadow-pulse 300ms ease-in-out',
+        'card-pulse': 'card-pulse 300ms ease-in-out',
       }
     },
   },

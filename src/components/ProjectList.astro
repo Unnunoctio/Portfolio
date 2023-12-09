@@ -1,0 +1,41 @@
+---
+import data from "../../public/projects/data.json";
+import ProjectCard from "./ProjectCard.astro";
+
+// Fetch repositories
+const res = await fetch("https://api.github.com/users/unnunoctio/repos", { headers: { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }, cache: 'no-cache' })
+const repositories = await res.json()
+
+const projects: ProjectPreview[] = await Promise.all(repositories.map(async(repo: any) => {
+  const { id, name, description } = repo
+  const extra = data.find(item => item.githubId === id)
+
+  const res = await fetch(`https://api.github.com/repos/unnunoctio/${name}/tags`, { headers: { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }, cache: 'no-cache' })
+  const tags = await res.json()
+
+  return {
+    id,
+    order: extra?.order,
+    title: (description !== null) ? description.split(' - ')[0] : name.replace('-', ' '),
+    preview: extra?.preview,
+    isReady: tags.find((tag: any) => tag.name === "1.0.0") ? true : false
+  }
+}))
+
+const sorted = projects.sort((a, b) => {
+  if (a.isReady === true && b.isReady === false) return -1
+  if (a.isReady === false && b.isReady === true) return 1
+  if (a.order !== undefined && b.order === undefined) return -1
+  if (a.order === undefined && b.order !== undefined) return 1
+  if (a.order !== undefined && b.order !== undefined) return a.order - b.order
+  return a.id - b.id
+})
+---
+
+<ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
+  {sorted.map(project => (
+    <li class="flex justify-center">
+      <ProjectCard {...project} />
+    </li>
+  ))}
+</ul>

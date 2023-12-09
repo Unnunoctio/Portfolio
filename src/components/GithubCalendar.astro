@@ -24,8 +24,8 @@ const headerDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
 const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?.date.toLocaleString('es-US', { month: 'short' })) as string[])
 ---
 
-<section>
-  <div class="mt-12">
+<section id="github-calendar" class="mt-32">
+  <div>
     <div class='flex justify-center w-full h-fit'>
       <div class='overflow-x-auto p-2'>
         <div class='min-w-[900px] w-[900px]'>
@@ -73,7 +73,7 @@ const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?
     </div>
   </div>
   <div class='flex justify-center mt-2'>
-    <div class='flex gap-1 md:gap-2 justify-between w-full max-w-[902px]'>
+    <div class='flex gap-2 md:gap-3 justify-between w-full max-w-[902px]'>
       <p class='text-[14px] md:text-[16px]'>{contributions.totalContributions} contribuciones en el último año</p>
       <div class='flex items-center gap-[2px] md:gap-1'>
         <span class='text-[14px]'>Menos</span>
