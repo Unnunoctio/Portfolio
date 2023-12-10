@@ -6,7 +6,7 @@ interface Props extends ProjectPreview {}
 const { id, title, preview, isReady } = Astro.props
 ---
 
-<a href={`/${id}`} class="card group relative w-full max-w-[400px] cursor-pointer">
+<a href={`/${id}`} data-astro-prefetch class="card group relative w-full max-w-[400px] cursor-pointer">
   <div class="absolute inset-0 w-full h-[270px] rounded-full transition-all duration-300 group-hover:shadow-card group-hover:animate-card-pulse group-hover:animate-card-shadow-pulse" />
   <div class="relative overflow-hidden w-full h-[270px] bg-bg-secondary rounded-lg outline outline-offset-4 outline-4 outline-transparent transition-all duration-300 group-hover:animate-card-pulse group-hover:outline-hover-outline">
     { preview && <Image src={preview} alt={title} width={450} height={280} class={`object-cover w-full h-full ${isReady === false ? 'brightness-75 group-hover:brightness-100' : ''}`} /> }
@@ -19,7 +19,7 @@ const { id, title, preview, isReady } = Astro.props
     }
   </div>
   <div class="flex items-center gap-2 px-1 mt-3 min-h-[36px]">
-    <ProjectLogo id={id} style="fill-text-primary" />
+    <ProjectLogo id={id} style="fill-text-primary stroke-text-primary" />
     <h3 class="text-2xl font-medium">{title}</h3>
   </div>
 </a>
