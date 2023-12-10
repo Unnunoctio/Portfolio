@@ -1,8 +1,15 @@
 ---
+import data from "../../public/projects/data.json";
 const { id, style } = Astro.props
+
+let logoId = null
+if (data.find(i => i.githubId === id) !== undefined) {
+  logoId = id
+}
 ---
 
-{ id === 675419361 &&
+{/* LOGO Rincon */}
+{ logoId === 675419361 &&
   <svg
     class={`w-auto h-9 ${style}`}
     width='342'
@@ -19,7 +26,8 @@ const { id, style } = Astro.props
   </svg>
 }
 
-{ id === 687208812 &&
+{/* LOGO Drinks API */}
+{ logoId === 687208812 &&
   <svg
     class={`w-auto h-9 ${style}`}
     width='256'
@@ -31,7 +39,8 @@ const { id, style } = Astro.props
   </svg>
 }
 
-{ id === 671492867 &&
+{/* LOGO NPM */}
+{ logoId === 671492867 &&
   <svg
     class={`w-auto h-6 ${style}`}
     width='384'
@@ -45,9 +54,10 @@ const { id, style } = Astro.props
   </svg>
 }
 
-{ id === 684913852 &&
+{/* LOGO Portfolio */}
+{ logoId === 684913852 &&
   <svg
-    class={`w-auto h-7 ${style}`}
+    class={`w-auto h-7 ${style} stroke-transparent`}
     xmlns='http://www.w3.org/2000/svg'
     width='197pt' height='122pt'
     viewBox='0 0 197 122'
@@ -58,5 +68,17 @@ const { id, style } = Astro.props
         vector-effect='non-scaling-stroke'
       />
     </g>
+  </svg>
+}
+
+{/* LOGO Project in Progress */}
+{ logoId === null &&
+  <svg
+    class={`w-auto h-9 ${style}`}
+    xmlns="http://www.w3.org/2000/svg"
+    width="14" height="14"
+    viewBox="0 0 14 14">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" d="M5.5 12.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3ZM.5 11H4m3 0h6.5m-2-2l2 2l-2 2m-6-3.5V1m0 0L10 3.5L5.5 6V1Z"
+    />
   </svg>
 }
