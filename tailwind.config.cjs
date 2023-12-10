@@ -68,11 +68,16 @@ export default {
         'card-pulse': {
           '0%, 100%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.03)' },
+        },
+        'skeleton-pulse': {
+          '0%, 100%': { backgroundColor: '#1C1C1C' },
+          '50%': { backgroundColor: '#272727' }, 
         }
       },
       animation: {
         'card-shadow-pulse': 'card-shadow-pulse 300ms ease-in-out',
         'card-pulse': 'card-pulse 300ms ease-in-out',
+        'skeleton-pulse': 'skeleton-pulse 1s infinite ease-in-out'
       }
     },
   },
