@@ -21,8 +21,9 @@ export default {
           outline: '#C0C0C088'
         },
         text: {
-          primary: '#F1F5F1',
+          primary: '#F0F0F0',
           secondary: '#A5A5A5',
+          ternary: '#525252',
           negative: '#000',
           active: '#805AD5',
         },
@@ -35,7 +36,7 @@ export default {
           orange: '#F97316',
           pink: '#EC4899',
           purple: '#8B5CF6',
-          white: '#F1F5F1'
+          white: '#F0F0F0'
         },
         calendar: {
           0: '#2D2D2Dab',
