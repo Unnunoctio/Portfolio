@@ -9,6 +9,7 @@ import ForkIcon from "../icons/ForkIcon.astro";
 import StarIcon from "../icons/StarIcon.astro";
 import WatcherIcon from "../icons/WatcherIcon.astro";
 import ProjectLogo from "../components/ProjectLogo.astro";
+import ProgressIcon from "../icons/ProgressIcon.astro";
 
 const { project } = Astro.params;
 
@@ -22,6 +23,9 @@ if (repo === undefined) {
 }
 
 const { name, html_url, description, homepage, license, topics, stargazers_count, forks, watchers } = repo
+const res_tags = await fetch(`https://api.github.com/repos/unnunoctio/${name}/tags`, { headers: { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }, cache: "no-cache" });
+const tags = await res_tags.json();
+const isReady = tags.find((tag: any) => tag.name === "1.0.0") ? true : false
 // const { images } = data.find(item => item.githubId === parseInt(project as string))
 const title = (description !== null) ? description.split(' - ')[0] : name.replace('-', ' ')
 const desc = description?.split(" - ")[1]
@@ -33,6 +37,12 @@ const desc = description?.split(" - ")[1]
       {/* LOGO navbar */}
       {/* LOGO real del proyecto */}
       <ProjectLogo id={parseInt(project as string)} title={title} style="mt-[92px] h-fit w-full max-w-[500px] max-h-[160px]" />
+      {!isReady && (
+        <div class="mt-4 flex gap-2">
+          <ProgressIcon style="w-9 h-9 stroke-text-active" />
+          <span class="text-2xl sm:text-3xl italic text-text-active">En Desarrollo</span>
+        </div>
+      )}
 
       <SkillBox title="Habilidades" codes={topics} />
 
