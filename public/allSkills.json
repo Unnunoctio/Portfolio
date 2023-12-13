@@ -13,5 +13,6 @@
   { "code": "postgres"  ,"name": "PostgreSQL" },
   { "code": "mongo"     ,"name": "MongoDB" },
   { "code": "graphql"   ,"name": "GraphQL" },
+  { "code": "npm"       ,"name": "NPM" },
   { "code": "api"       ,"name": "APIs" }
 ]

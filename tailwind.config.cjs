@@ -36,7 +36,8 @@ export default {
           orange: '#F97316',
           pink: '#EC4899',
           purple: '#8B5CF6',
-          white: '#F0F0F0'
+          white: '#F0F0F0',
+          red: '#DC2626',
         },
         calendar: {
           0: '#2D2D2Dab',
