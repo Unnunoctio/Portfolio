@@ -1,5 +1,5 @@
 <script>
-  import ProjectLogo from "./ProjectLogo.svelte";
+  import PreviewLogo from "./PreviewLogo.svelte";
   
   export let id;
   export let title;
@@ -20,7 +20,7 @@
     {/if}
   </div>
   <div class="flex items-center gap-2 px-1 mt-3 min-h-[36px]">
-    <ProjectLogo id={id} style="fill-text-primary stroke-text-primary" />
+    <PreviewLogo id={id} style="fill-text-primary stroke-text-primary" />
     <h3 class="text-2xl font-medium">{title}</h3>
   </div>
 </a>

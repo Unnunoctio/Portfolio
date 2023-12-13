@@ -1,8 +1,8 @@
 <script>
   export let token;
-  import data from "/public/projects/data.json";
+  import data from "../assets/projectsData.json";
   import ProjectCard from "./ProjectCard.svelte";
-    import ProjectSkeleton from "./ProjectSkeleton.svelte";
+  import ProjectSkeleton from "./ProjectSkeleton.svelte";
 
   async function fetchRepos() {
     const res = await fetch("https://api.github.com/users/unnunoctio/repos", {
