@@ -1,5 +1,5 @@
 ---
-import skills from '../../public/mySkills.json';
+import skills from '../../public/allSkills.json';
 import SkillBadge from './SkillBadge.astro';
 
 const { title, codes = null } = Astro.props
@@ -13,10 +13,17 @@ const { title, codes = null } = Astro.props
         <li><SkillBadge {...skill} /></li>
       ))
     }
-    {codes !== null &&
+    {codes !== null && codes.length > 0 &&
       skills.filter(skill => codes.includes(skill.code)).map(skill => (
         <li><SkillBadge {...skill} /></li>
       ))
+    }
+    {codes !== null && codes.length === 0 &&
+      <li>
+        <span class="inline-flex items-center px-2 py-1 text-xs rounded-full ring-1 ring-inset bg-skills-purple/20 ring-skills-purple">
+          Sin Habilidades
+        </span>
+      </li>
     }
   </ul>
 </div>
