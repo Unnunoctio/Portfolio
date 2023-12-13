@@ -1,5 +1,4 @@
 ---
-export const prerender = false;
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
 import TypeAndDelete from '../components/TypeAndDelete.astro';
@@ -20,7 +19,7 @@ const github_token = import.meta.env.GITHUB_TOKEN
 			<Logo />
 
 			<div class="flex flex-col gap-4 mt-24">
-				<h1 class="text-5xl sm:text-6xl">Rafael Carvacho</h1>
+				<h1 class="text-5xl sm:text-6xl font-medium">Rafael Carvacho</h1>
 				<TypeAndDelete />
 			</div>
 
@@ -43,7 +42,7 @@ const github_token = import.meta.env.GITHUB_TOKEN
 		</section>
 		<section id="projects" class="w-full flex flex-col items-center bg-bg-secondary min-h-[80vh]">
 			<div class="my-24 w-full max-w-nav px-4 sm:px-6 md:px-8 lg:px-[6.75rem]">
-				<h2 class="text-5xl">Mis Proyectos</h2>
+				<h2 class="text-5xl font-medium">Mis Proyectos</h2>
 				<div class="flex flex-col justify-between min-h-[100vh]">
 					<ProjectList token={github_token} client:only="svelte" />
 					<GithubCalendar />
