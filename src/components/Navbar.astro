@@ -1,5 +1,6 @@
 ---
 import HomeIcon from "../icons/HomeIcon.astro";
+import UserMenu from "../islands/dropdown/UserMenu.svelte";
 const { project } = Astro.params
 ---
 
@@ -11,5 +12,5 @@ const { project } = Astro.params
   >
     <HomeIcon style="h-7 w-7 fill-text-secondary transition-colors group-hover:fill-hover-text" />
   </a>
-  <a>Menu</a>
+  <UserMenu client:load />
 </nav>

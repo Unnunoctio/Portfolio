@@ -13,12 +13,15 @@ export default {
           skills: '#272727',
           btn: '#2D2D2DAA',
           active: '#4e119d',
-          'active-light': '#8B5CF6'
+          'active-light': '#8B5CF6',
+          component: '#211F1F',
+          modal: '#141212'
         },
         hover: {
           btn: '#3E3E3EAA',
           text: '#EFEFEF',
-          outline: '#C0C0C088'
+          outline: '#C0C0C088',
+          component: '#3E3E3EAA',
         },
         text: {
           primary: '#F0F0F0',
@@ -26,6 +29,9 @@ export default {
           ternary: '#525252',
           negative: '#000',
           active: '#805AD5',
+        },
+        divider: {
+          component: '#353535'
         },
         skills: {
           green: '#22C55E',
