@@ -1,6 +1,7 @@
 <script>
   import UserIcon from "./UserIcon.svelte";
   import ContactMe from "../modal/ContactMe.svelte";
+  import AboutMe from "../modal/AboutMe.svelte";
 
   let isMenuOpen = false;
   let container;
@@ -28,7 +29,8 @@
           Rafael Carvacho <span class="text-text-active">#WEB</span>
         </h3>
         <ul class="flex flex-col gap-3 p-5">
-          <ContactMe />
+          <li> <AboutMe /> </li>
+          <li> <ContactMe /> </li>
         </ul>
       </div>
     </section>
