@@ -1,7 +1,8 @@
 <script>
   import UserIcon from "./UserIcon.svelte";
-  import ContactMe from "../modal/ContactMe.svelte";
   import AboutMe from "../modal/AboutMe.svelte";
+  import Resume from "../modal/Resume.svelte";
+  import ContactMe from "../modal/ContactMe.svelte";
 
   let isMenuOpen = false;
   let container;
@@ -30,6 +31,7 @@
         </h3>
         <ul class="flex flex-col gap-3 p-5">
           <li> <AboutMe /> </li>
+          <li> <Resume /> </li>
           <li> <ContactMe /> </li>
         </ul>
       </div>
