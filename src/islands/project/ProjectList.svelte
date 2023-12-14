@@ -1,6 +1,6 @@
 <script>
   export let token;
-  import data from "../assets/projectsData.json";
+  import data from "../../assets/projectsData.json";
   import ProjectCard from "./ProjectCard.svelte";
   import ProjectSkeleton from "./ProjectSkeleton.svelte";
 
