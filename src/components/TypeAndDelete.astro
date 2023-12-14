@@ -1,0 +1,28 @@
+---
+---
+
+<span id="typewriter" class="text-2xl sm:text-3xl italic text-text-active h-[40px]">
+</span>
+
+<script>
+  import Typewriter from 'typewriter-effect/dist/core';
+
+  var typing = document.getElementById('typewriter')
+  var typewriter = new Typewriter(typing, {
+    loop: true,
+    delay: 50
+  })
+
+  typewriter
+    .typeString('Software Developer.')
+    .pauseFor(2000)
+    .deleteAll()
+  
+    .typeString('Web Developer.')
+    .pauseFor(2000)
+    .deleteAll()
+
+    .typeString('Gamer.')
+    .pauseFor(2000)
+    .start()
+</script>

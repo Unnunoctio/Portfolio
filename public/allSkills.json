@@ -1,0 +1,18 @@
+[
+  { "code": "js"        ,"name": "JavaScript" },
+  { "code": "ts"        ,"name": "TypeScript" },
+  { "code": "python"    ,"name": "Python"},
+  { "code": "html"      ,"name": "HTML5" },
+  { "code": "css"       ,"name": "CSS3" },
+  { "code": "tailwind"  ,"name": "TailwindCSS" },
+  { "code": "node"      ,"name": "NodeJS" },
+  { "code": "react"     ,"name": "React" },
+  { "code": "next"      ,"name": "NextJS" },
+  { "code": "astro"     ,"name": "Astro" },
+  { "code": "svelte"    ,"name": "Svelte" },
+  { "code": "postgres"  ,"name": "PostgreSQL" },
+  { "code": "mongo"     ,"name": "MongoDB" },
+  { "code": "graphql"   ,"name": "GraphQL" },
+  { "code": "npm"       ,"name": "NPM" },
+  { "code": "api"       ,"name": "APIs" }
+]
