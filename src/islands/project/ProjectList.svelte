@@ -36,12 +36,11 @@
     );
 
     const sorted = projects.sort((a, b) => {
-      if (a.isReady === true && b.isReady === false) return -1;
-      if (a.isReady === false && b.isReady === true) return 1;
       if (a.order !== undefined && b.order === undefined) return -1;
       if (a.order === undefined && b.order !== undefined) return 1;
-      if (a.order !== undefined && b.order !== undefined)
-        return a.order - b.order;
+      if (a.order !== undefined && b.order !== undefined) return a.order - b.order;
+      if (a.isReady === true && b.isReady === false) return -1;
+      if (a.isReady === false && b.isReady === true) return 1;
       return a.id - b.id;
     });
 
