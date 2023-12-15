@@ -39,7 +39,7 @@ import EducationIcon from "./EducationIcon.svelte";
       {/if}
     </div>
     {#if description !== null}
-      <p class="mt-2 text-md">{description}</p>
+      <p class="mt-2 text-md text-text-secondary">{description}</p>
     {/if}
   </div>
 </section>

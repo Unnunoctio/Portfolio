@@ -22,13 +22,11 @@
           <h2 class="text-2xl sm:text-3xl font-medium">Soy Rafael Carvacho</h2>
           <h3 class="text-xl sm:text-2xl italic text-text-active">Web Developer & Software Developer</h3>
         </div>
-        <div class="text-md sm:text-lg">
-          <p>
-            Desarrollador de software con experiencia en diversos proyectos, que van desde aplicaciones web hasta software de escritorio. Busco oportunidades 
-            para expandir mis habilidades y conocimientos, manteniéndome actualizado con las últimas tecnologías y tendencias en el campo. Invierto tiempo en 
-            proyectos personales, además de estar activamente involucrado en comunidades de desarrollo.
-          </p>
-        </div>
+        <p class="text-lg sm:text-xl text-text-secondary">
+          Desarrollador de software con experiencia en diversos proyectos, que van desde aplicaciones web hasta software de escritorio. Busco oportunidades 
+          para expandir mis habilidades y conocimientos, manteniéndome actualizado con las últimas tecnologías y tendencias en el campo. Invierto tiempo en 
+          proyectos personales, además de estar activamente involucrado en comunidades de desarrollo.
+        </p>
       </div>
     </div>
   </section>
