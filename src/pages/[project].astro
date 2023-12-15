@@ -59,7 +59,7 @@ const desc = description?.split(" - ")[1]
             <GithubIcon style="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-hover-text" />
             Repositorio
           </MediaButton>
-          {homepage !== null &&
+          {homepage !== null && homepage !== "" &&
             <MediaButton href={homepage} ariaLabel="Website" style="group flex gap-4 py-4">
               <LinkIcon style="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-hover-text" />
               Website
