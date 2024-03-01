@@ -1,6 +1,7 @@
 interface Project {
   id: number
   order: number
+  path: string
   title: string
   website: string | null
   repository: string
@@ -12,13 +13,5 @@ interface Project {
   watchers: number
   preview: string
   images: string[]
-  isReady: boolean
-}
-
-interface ProjectPreview {
-  id: number
-  order: number
-  title: string
-  preview: string
   isReady: boolean
 }
