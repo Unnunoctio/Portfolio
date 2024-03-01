@@ -69,8 +69,8 @@ export default {
       },
       keyframes: {
         'card-shadow-pulse': {
-          '0%, 100%': { boxShadow: '0px 16px 60px 4px rgba(128, 90, 213, 0.3)' }, 
-          '50%': { boxShadow: '0px 16px 60px 20px rgba(128, 90, 213, 0.7)' }, 
+          '0%, 100%': { boxShadow: '0px 16px 60px 4px rgba(128, 90, 213, 0.3)', transform: 'scale(1)' }, 
+          '50%': { boxShadow: '0px 16px 60px 20px rgba(128, 90, 213, 0.7)', transform: 'scale(1.03)' }, 
         },
         'card-pulse': {
           '0%, 100%': { transform: 'scale(1)' },

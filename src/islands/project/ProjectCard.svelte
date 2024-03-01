@@ -2,13 +2,14 @@
   import PreviewLogo from "./PreviewLogo.svelte";
   
   export let id;
+  export let path;
   export let title;
   export let preview;
   export let isReady;
 </script>
 
-<a href={`/${id}`} data-astro-prefetch class="card group relative w-full max-w-[400px] cursor-pointer">
-  <div class="absolute inset-0 w-full h-[270px] rounded-full transition-all duration-300 group-hover:shadow-card group-hover:animate-card-pulse group-hover:animate-card-shadow-pulse" />
+<a href={`/${path}`} data-astro-prefetch class="card group relative w-full max-w-[400px] cursor-pointer">
+  <div class="absolute inset-0 w-full h-[270px] rounded-full transition-all duration-300 group-hover:shadow-card group-hover:animate-card-shadow-pulse" />
   <div class="relative overflow-hidden w-full h-[270px] bg-bg-secondary rounded-lg outline outline-offset-4 outline-4 outline-transparent transition-all duration-300 group-hover:animate-card-pulse group-hover:outline-hover-outline">
     {#if preview} <img src={preview} alt={title} width={450} height={280} class={`object-cover w-full h-full ${isReady === false ? 'brightness-75 group-hover:brightness-100' : ''}`} /> {/if}
     {#if !preview && isReady} <img src="/projects/no_image.png" alt="no project" width={450} height={280} class="object-cover w-full h-full" /> {/if}
