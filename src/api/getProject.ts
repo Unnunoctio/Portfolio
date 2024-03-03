@@ -1,35 +1,30 @@
-import data from "../assets/projectsData.json"
+import type { ProjectData } from "../types";
 
-export const getProject = async(token: string, path: string): Promise<Project | null> => {
-  // Get Repositories for github
-  const res = await fetch("https://api.github.com/users/unnunoctio/repos", {
-    headers: { Authorization: `Bearer ${token}` },
-    cache: "no-cache",
-  });
-  const repositories = await res.json();
+export const getProject = async (apiUrl: string, path:string): Promise<ProjectData | null> => {
+  const res = await fetch(`${apiUrl}/api/projects?fields[0]=title&fields[1]=path&fields[2]=website&fields[3]=repository&fields[4]=description&fields[5]=isReady&fields[6]=githubId&populate[skills][fields][0]=order&populate[skills][fields][1]=lang&populate[skills][fields][2]=color&populate[images]=*`)
+  if (!res.ok) return null
 
-  const repo = repositories?.find((repo: any) => repo.name.toLowerCase() === path)
-  if (repo === undefined) return null
-
-  // Formatted data
-  const { id, name, html_url, description, homepage, license, topics, stargazers_count, forks, watchers } = repo
-  const extra = data.find(item => item.githubId === id)
+  const { data } = await res.json()
+  
+  const project = data.find((project: any) => project.attributes.path === path)
+  if (project === undefined) return null
 
   return {
-    id,
-    order: extra?.order,
-    path: name.toLowerCase(),
-    title: description !== null ? description.split(" - ")[0] : name.replace("-", " "),
-    website: homepage,
-    repository: html_url,
-    skills: topics,
-    description: description?.split(" - ")[1],
-    license: license?.name,
-    stars: stargazers_count,
-    forks,
-    watchers,
-    preview: extra?.preview,
-    images: extra?.images,
-    isReady: true
-  } as Project
+    title: project.attributes.title,
+    path: project.attributes.path,
+    website: project.attributes.website,
+    repository: project.attributes.repository,
+    skills: project.attributes.skills.data
+      .sort((a: any, b: any) => a.attributes.order - b.attributes.order)
+      .map(({ attributes }: any) => {
+        return {
+          lang: attributes.lang,
+          color: attributes.color
+        }
+      }),
+    description: project.attributes.description,
+    images: project.attributes.images.data,
+    isReady: project.attributes.isReady,
+    githubId: Number(project.attributes.githubId)
+  }
 }

@@ -1,17 +1,24 @@
-interface Project {
-  id: number
-  order: number
-  path: string
+export interface ProjectPreview {
   title: string
+  path: string
+  logo: string
+  preview: string
+  isReady: boolean
+}
+
+export interface ProjectData {
+  title: string
+  path: string
   website: string | null
   repository: string
-  skills: string[]
+  skills: Skill[]
   description: string
-  license: string
-  stars: number
-  forks: number
-  watchers: number
-  preview: string
-  images: string[]
+  images: string[] | null
   isReady: boolean
+  githubId: number
+}
+
+export interface Skill {
+  lang: string,
+  color: string
 }
