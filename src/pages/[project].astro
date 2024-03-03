@@ -12,10 +12,10 @@ import ProjectLogo from "../components/ProjectLogo.astro";
 import ProgressIcon from "../icons/ProgressIcon.astro";
 import { getProject } from "../api/getProject";
 
-const { project } = Astro.params;
+const { project: projectPath } = Astro.params;
 const github_token = import.meta.env.GITHUB_TOKEN
 
-const projectData = await getProject(github_token, project as string)
+const projectData = await getProject(github_token, projectPath as string)
 if (projectData === null) return Astro.redirect('/')
 
 const { id ,title, website, repository, skills, description, license, stars, forks, watchers, isReady } = projectData
