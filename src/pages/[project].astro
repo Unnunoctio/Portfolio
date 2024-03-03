@@ -6,6 +6,7 @@ import LinkIcon from "../icons/LinkIcon.astro";
 import ProjectLogo from "../components/ProjectLogo.astro";
 import ProgressIcon from "../icons/ProgressIcon.astro";
 import SkillBox from "../components/SkillBox.astro";
+import GithubDetails from "../islands/project/GithubDetails.svelte";
 import { getProject } from "../api/getProject";
 
 const { project: projectPath } = Astro.params;
@@ -59,18 +60,7 @@ const { title, website, repository, skills, description, isReady, githubId } = p
         <div class="w-full max-w-[350px]">
           <h3 class="text-3xl font-medium w-full sm:max-w-[150px]">Detalles Adicionales</h3>
         </div>
-        <!-- <div class="flex gap-y-2 gap-x-6 justify-between flex-wrap sm:flex-nowrap w-full max-w-[700px]">
-          <ProjectDetail title="LICENCIA" body={license} style="min-w-[109px]" />
-          <ProjectDetail title="STARS" body={stars}>
-            <StarIcon style="w-6 h-6 fill-text-primary" />
-          </ProjectDetail>
-          <ProjectDetail title="WATCHERS" body={watchers}>
-            <WatcherIcon style="w-6 h-6 fill-text-primary" />
-          </ProjectDetail>
-          <ProjectDetail title="FORKS" body={forks}>
-            <ForkIcon style="w-6 h-6 fill-text-primary" />
-          </ProjectDetail>
-        </div> -->
+        <GithubDetails githubId={githubId} githubToken={github_token} client:only="svelte" />
       </div>
     </section>
   </main>

@@ -18,6 +18,13 @@ export interface ProjectData {
   githubId: number
 }
 
+export interface GithubDetails {
+  license: string
+  stars: number
+  forks: number
+  watchers: number
+}
+
 export interface Skill {
   lang: string,
   color: string

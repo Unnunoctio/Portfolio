@@ -1,6 +1,8 @@
----
-const { title, body, style } = Astro.props;
----
+<script>
+  export let title;
+  export let body;
+  export let style;
+</script>
 
 <div class={style}>
   <h3 class="text-md text-text-ternary font-bold">{title}</h3>

@@ -1,6 +1,6 @@
----
-const { style } = Astro.props
----
+<script>
+  export let style;
+</script>
 
 <svg
   class={style}
