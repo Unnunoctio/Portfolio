@@ -8,7 +8,7 @@ import LinkedInIcon from '../icons/LinkedInIcon.astro';
 import DownloadIcon from '../icons/DownloadIcon.astro';
 import ProjectList from '../islands/project/ProjectList.svelte';
 import GithubCalendar from '../components/GithubCalendar.astro';
-import TypeAndDelete from '../islands/home/TypeAndDelete.svelte';
+import TypeAndDelete from '../components/TypeAndDelete.astro';
 
 const github_token = import.meta.env.GITHUB_TOKEN
 ---
@@ -20,7 +20,7 @@ const github_token = import.meta.env.GITHUB_TOKEN
 
 			<div class="flex flex-col gap-4 mt-24">
 				<h1 class="text-5xl sm:text-6xl font-medium">Rafael Carvacho</h1>
-				<TypeAndDelete client:only="svelte" />
+				<TypeAndDelete />
 			</div>
 
 			<SkillBox title="Mis Habilidades" />

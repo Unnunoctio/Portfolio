@@ -1,8 +1,13 @@
+---
+---
+
+<span id="typewriter" class="text-2xl sm:text-3xl italic text-text-active h-[40px]">
+</span>
+
 <script>
-  import { onMount } from 'svelte';
   import Typewriter from 'typewriter-effect/dist/core';
 
-  onMount(() => {
+  document.addEventListener('astro:page-load', () => {
     var typing = document.getElementById('typewriter')
     var typewriter = new Typewriter(typing, {
       loop: true,
@@ -23,7 +28,3 @@
       .start()
   })
 </script>
-
-
-<span id="typewriter" class="text-2xl sm:text-3xl italic text-text-active h-[40px]">
-</span>
