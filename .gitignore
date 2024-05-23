@@ -2,6 +2,9 @@
 dist/
 .vercel/
 
+# files
+deprecated/
+
 # generated types
 .astro/
 
