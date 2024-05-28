@@ -1,9 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/Logo.astro";
+import TypeAndDelete from "../components/TypeAndDelete.astro";
+import SkillBox from "../components/SkillBox.astro";
+import MediaButtons from "../components/MediaButtons.astro";
+import GithubCalendar from "../components/GithubCalendar.astro";
+import Navbar from "../components/Navbar.astro";
+import ProjectList from "../components/ProjectList.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1 class="text-2xl text-emerald-500">Titulo</h1>
-	</main>
+<Layout title="Rafael Carvacho | Portafolio">
+  <main class="flex flex-col items-center w-full">
+    <section id="home" class="relative w-full max-w-page px-4 sm:px-6 md:px-8 lg:px-[112px] pb-14">
+      <Navbar />
+      <Logo />
+      <div class="flex flex-col gap-4 mt-24">
+        <h1 class="text-5xl sm:text-6xl font-medium">Rafael Carvacho</h1>
+        <TypeAndDelete />
+      </div>
+      <SkillBox title="Mis Habilidades" />
+      <MediaButtons />
+    </section>
+    <section id="projects" class="flex flex-col items-center w-full bg-bg-secondary min-h-[80vh]">
+      <div class="my-24 w-full max-w-page px-4 sm:px-6 md:px-8 lg:px-[112px]">
+        <h2 class="text-5xl font-medium">Mis Proyectos</h2>
+        <ProjectList />
+				<GithubCalendar />
+      </div>
+    </section>
+  </main>
 </Layout>
