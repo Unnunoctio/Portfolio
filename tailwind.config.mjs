@@ -26,6 +26,7 @@ export default {
 				text: {
 					primary: '#F0F0F0',
 					secondary: '#A5A5A5',
+					ternary: '#525252',
 					active: '#805AD5'
 				},
 				divider: {
