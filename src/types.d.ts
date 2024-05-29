@@ -1,24 +1,46 @@
-interface Project {
-  id: number
-  order: number
+export interface About {
+  about_id: number
   title: string
-  website: string | null
-  repository: string
-  skills: string[]
-  description: string
-  license: string
-  stars: number
-  forks: number
-  watchers: number
-  preview: string
-  images: string[]
-  isReady: boolean
+  sub_title: string
+  biography: string
+  avatar: string
 }
 
-interface ProjectPreview {
-  id: number
+export interface Contact {
+  contact_id: number
+  web_contact: string
+  link: string
+  styled_link: string
+}
+
+export interface Project {
+  project_id: number
   order: number
   title: string
-  preview: string
-  isReady: boolean
+  path: string
+  icon: string | null
+  logo: string | null
+  preview: string | null
+  website: string | null
+  repository: string
+  github_id: number
+  description: string | null
+  is_ready: boolean
+}
+
+export interface Resume {
+  resume_id: number
+  code: string
+  start_date: Date
+  end_date: Date | null
+  title: string
+  company: string
+  description: string | null
+}
+
+export interface Skill {
+  skill_id: number
+  order: number
+  lang: string
+  color: string
 }

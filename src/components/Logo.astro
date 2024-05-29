@@ -2,12 +2,7 @@
 import { Image } from "astro:assets";
 ---
 
-<div class="flex justify-center">
-  <div class="flex items-center gap-2 h-13">
-    <Image src="/logo.svg" alt="LOGO" width={72} height={45} />
-    <div class="hidden sm:flex flex-col justify-center">
-      <span class="text-2xl font-medium leading-none">Rafael</span>
-      <span class="text-2xl font-medium leading-none">Carvacho</span>
-    </div>
-  </div>
+<div class="flex justify-center items-center w-full h-[52px]">
+  <Image src="/logo.svg" alt="LOGO" width={184} height={46} class="hidden sm:block" />
+  <Image src="/logo-icon.svg" alt="LOGO" width={74} height={46} class="block sm:hidden" />
 </div>

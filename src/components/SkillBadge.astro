@@ -1,22 +1,17 @@
 ---
-const { code, name } = Astro.props
+import type { Skill } from "../types";
+
+interface Props extends Skill {}
+
+const { lang, color } = Astro.props;
 ---
 
 <span
-  class={"inline-flex items-center px-2 py-1 text-xs rounded-full ring-1 ring-inset " +
-    (
-      (code === 'js' ? 'bg-skills-yellow/20 ring-skills-yellow': '') ||
-      (['ts', 'python', 'css', 'postgres'].includes(code) ? 'bg-skills-blue/20 ring-skills-blue': '') ||
-      (['html', 'astro', 'svelte'].includes(code) ? 'bg-skills-orange/20 ring-skills-orange': '') ||
-      (['tailwind', 'react'].includes(code) ? 'bg-skills-cyan/20 ring-skills-cyan': '') ||
-      (code === 'node' ? 'bg-skills-green/20 ring-skills-green': '') ||
-      (code === 'next' ? 'bg-skills-white/20 ring-skills-white': '') ||
-      (code === 'mongo' ? 'bg-skills-green-light/20 ring-skills-green-light': '') ||
-      (code === 'graphql' ? 'bg-skills-pink/20 ring-skills-pink': '') ||
-      (code === 'npm' ? 'bg-skills-red/20 ring-skills-red': '') ||
-      (code === 'api' ? 'bg-skills-purple/20 ring-skills-purple': '')
-    )
-  }
+  class="inline-flex items-center px-2 py-1 text-xs rounded-full ring-1 ring-inset"
+  style={{
+    "background-color": `${color}33`,
+    "--tw-ring-color": color
+  }}
 >
-  {name}
+  {lang}
 </span>

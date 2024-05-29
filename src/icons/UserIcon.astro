@@ -1,8 +1,14 @@
 ---
-const { style } = Astro.props
+interface Props {
+  style: string
+  active: string
+}
+
+const { style, active } = Astro.props
 ---
 
 <svg
+  :class={active}
   class={style}
   xmlns='http://www.w3.org/2000/svg'
   width={20} height={20}
