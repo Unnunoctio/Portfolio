@@ -36,6 +36,13 @@ const Project = defineTable({
   }
 })
 
+const ProjectSkill = defineTable({
+  columns: {
+    project_id: column.number({ references: () => Project.columns.project_id }),
+    skill_id: column.number({ references: () => Skill.columns.skill_id }),
+  }
+})
+
 const Resume = defineTable({
   columns: {
     resume_id: column.number({ primaryKey: true }),
@@ -59,5 +66,5 @@ const Skill = defineTable({
 
 // https://astro.build/db/config
 export default defineDb({
-  tables: { About, Contact, Project, Resume, Skill }
+  tables: { About, Contact, Project, ProjectSkill, Resume, Skill }
 });
