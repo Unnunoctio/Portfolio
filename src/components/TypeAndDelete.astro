@@ -1,27 +1,65 @@
 ---
 ---
 
-<span id="typewriter" class="text-2xl sm:text-3xl italic text-text-active h-[40px]"></span>
+<div class="relative flex w-fit h-[40px]"
+  x-data=`{
+    text: '',
+    textArray : ['Software Developer.', 'Web Developer.', 'Gamer.'],
+    textIndex: 0,
+    charIndex: 0,
+    pauseEnd: 2000,
+    cursorSpeed: 420,
+    pauseStart: 0,
+    typeSpeed: 60,
+    direction: 'forward'
+  }`
+  x-init=`(() => {
+    function startTyping() {
+      if (!$data.textArray || !$data.textArray[$data.textIndex]) return;
+      
+      const current = $data.textArray[$data.textIndex];
 
-<script>
-  import Typewriter from 'typewriter-effect/dist/core';
+      if ($data.charIndex > current.length) {
+        $data.direction = 'backward';
+        clearInterval(typingInterval);
+        setTimeout(() => {
+          typingInterval = setInterval(startTyping, $data.typeSpeed);
+        }, $data.pauseEnd);
+      }
 
-  var typing = document.getElementById('typewriter')
-  var typewriter = new Typewriter(typing, {
-    loop: true,
-    delay: 50
-  })
+      $data.text = current.substring(0, $data.charIndex);
 
-  typewriter
-    .typeString('Software Developer.')
-    .pauseFor(2000)
-    .deleteAll()
-  
-    .typeString('Web Developer.')
-    .pauseFor(2000)
-    .deleteAll()
+      if ($data.direction === 'forward') {
+        $data.charIndex += 1;
+      } else {
+        if ($data.charIndex === 0) {
+          $data.direction = 'forward';
+          clearInterval(typingInterval);
+          setTimeout(() => {
+            $data.textIndex += 1;
+            if ($data.textIndex >= $data.textArray.length) {
+              $data.textIndex = 0;
+            }
+            typingInterval = setInterval(startTyping, $data.typeSpeed);
+          }, $data.pauseStart);
+        }
+        $data.charIndex -= 1;
+      }
+    }
 
-    .typeString('Gamer.')
-    .pauseFor(2000)
-    .start()
-</script>
+    let typingInterval = setInterval(startTyping, $data.typeSpeed);
+            
+    setInterval(function(){
+      if($refs.cursor) {
+        if($refs.cursor.classList.contains('hidden')){
+            $refs.cursor.classList.remove('hidden');
+        } else {
+            $refs.cursor.classList.add('hidden');
+        }
+      }
+    }, $data.cursorSpeed);
+  })()`
+>
+  <h1 class="text-2xl sm:text-3xl italic text-text-active" x-text="text"></h1>
+  <span class=" text-2xl sm:text-3xl italic text-text-active" x-ref="cursor">|</span>
+</div>
