@@ -11,17 +11,33 @@ import StarIcon from '../icons/StarIcon.astro';
 import ForkIcon from '../icons/ForkIcon.astro';
 import WatcherIcon from '../icons/WatcherIcon.astro';
 import ProjectDetail from '../components/ProjectDetail.astro';
+import { getProject, projectStore, updatedProjects, updateGithubProject } from '../store/project';
+import type { ProjectComplete, Project as ProjectType } from '../types';
+import { minutesDifference } from '../utils/time';
 
 const { path } = Astro.params;
-const project = (await db.select().from(Project).where(eq(Project.path, path as string)))[0]
-if (project === undefined) return Astro.redirect('/');
 
-const { title, logo, website, repository, github_id, description, is_ready } = project;
+// Obtiene el projecto desde la store, si no existe actualiza los proyectos desde la base de datos y vuelve a obtener el projecto
+let project = getProject(path as string);
+if (project === undefined || minutesDifference(projectStore.get().last_update, new Date(), 10)) {
+  const projectDB: ProjectType[] = await db.select().from(Project)
+  updatedProjects(projectDB)
+  project = getProject(path as string);
+  if (project === undefined) {
+    return Astro.redirect('/');
+  }
+}
 
-const res = await fetch("https://api.github.com/users/unnunoctio/repos", { headers: { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }, cache: 'no-cache' })
-const data = await res.json()
-const repo = data?.find((r: any) => r.id === github_id)
-const { license, stargazers_count, forks, watchers } = repo
+// Actualizar datos de github (license, stars, watchers, forks)
+if (project.github === null || minutesDifference(projectStore.get().last_update, new Date(), 10)) {
+  const res = await fetch("https://api.github.com/users/unnunoctio/repos", { headers: { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }, cache: 'no-cache' })
+  const data = await res.json()
+  const repo = data?.find((r: any) => r.id === project?.github_id)
+  updateGithubProject(path as string, { license: repo.license.name, stargazers: repo.stargazers_count, forks: repo.forks, watchers: repo.watchers })
+  project = getProject(path as string)
+}
+
+const { title, logo, website, repository, description, is_ready, github } = project as ProjectComplete;
 ---
 
 <Layout title={`${title} | Proyectos`}>
@@ -60,14 +76,14 @@ const { license, stargazers_count, forks, watchers } = repo
 
       <ProjectInfo title='Detalles Adicionales'>
         <div class="flex gap-y-2 gap-x-6 justify-between flex-wrap sm:flex-nowrap w-full max-w-[700px]">
-          <ProjectDetail title='LICENCIA' value={license.name} style='min-w-[109px]' />
-          <ProjectDetail title="STARS" value={stargazers_count}>
+          <ProjectDetail title='LICENCIA' value={github?.license} style='min-w-[109px]' />
+          <ProjectDetail title="STARS" value={github?.stargazers}>
             <StarIcon style="w-6 h-6 fill-text-primary" />
           </ProjectDetail>
-          <ProjectDetail title="WATCHERS" value={watchers}>
+          <ProjectDetail title="WATCHERS" value={github?.watchers}>
             <WatcherIcon style="w-6 h-6 fill-text-primary" />
           </ProjectDetail>
-          <ProjectDetail title="FORKS" value={forks}>
+          <ProjectDetail title="FORKS" value={github?.forks}>
             <ForkIcon style="w-6 h-6 fill-text-primary" />
           </ProjectDetail>
         </div>
