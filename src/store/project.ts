@@ -17,7 +17,9 @@ export const updatedProjects = (newProjects: Project[]) => {
     return {
       ...project,
       skills: pStore?.skills ?? [],
-      github: pStore?.github ?? null
+      skills_update: pStore?.skills_update ?? new Date(),
+      github: pStore?.github ?? null,
+      github_update: pStore?.github_update ?? new Date()
     } as ProjectComplete
   })
   
@@ -29,7 +31,7 @@ export const getProject = (path: string) => projectStore.get().projects.find(p =
 export const updateGithubProject = (path: string, newData: GithubData) => {
   const updProjects = projectStore.get().projects.map(project => {
     if (project.path === path) {
-      return { ...project, github: newData }
+      return { ...project, github: newData, github_update: new Date() }
     }
     return project
   })
@@ -40,7 +42,7 @@ export const updateGithubProject = (path: string, newData: GithubData) => {
 export const updateSkillsProject = (path: string, newSkills: Skill[]) => {
   const updProjects = projectStore.get().projects.map(project => {
     if (project.path === path) {
-      return { ...project, skills: newSkills }
+      return { ...project, skills: newSkills, github_update: new Date() }
     }
     return project
   })

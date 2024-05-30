@@ -23,7 +23,7 @@ if (path === undefined) {
 } else {
   let project = getProject(path as string);
   if (project !== undefined) {
-    if (project.skills.length === 0 || minutesDifference(projectStore.get().last_update, new Date(), 10)) {
+    if (project.skills.length === 0 || minutesDifference(project.skills_update, new Date(), 10)) {
       const skills_id = (await db.select().from(ProjectSkill).where(eq(ProjectSkill.project_id, project.project_id))).map((s) => s.skill_id)
       const skillsDB = await db.select().from(Skill).where(inArray(Skill.skill_id, skills_id))
       updateSkillsProject(path, skillsDB)

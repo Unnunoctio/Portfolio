@@ -29,7 +29,7 @@ if (project === undefined || minutesDifference(projectStore.get().last_update, n
 }
 
 // Actualizar datos de github (license, stars, watchers, forks)
-if (project.github === null || minutesDifference(projectStore.get().last_update, new Date(), 10)) {
+if (project.github === null || minutesDifference(project.github_update, new Date(), 10)) {
   const res = await fetch("https://api.github.com/users/unnunoctio/repos", { headers: { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }, cache: 'no-cache' })
   const data = await res.json()
   const repo = data?.find((r: any) => r.id === project?.github_id)
