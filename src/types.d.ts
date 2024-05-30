@@ -28,6 +28,18 @@ export interface Project {
   is_ready: boolean
 }
 
+export interface GithubData {
+  license: string
+  stargazers: number
+  forks: number
+  watchers: number
+}
+
+export interface ProjectComplete extends Project {
+  skills: Skill[],
+  github: GithubData | null
+}
+
 export interface Resume {
   resume_id: number
   code: string
