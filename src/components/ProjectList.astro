@@ -2,8 +2,15 @@
 import { db, Project } from 'astro:db';
 import type { Project as ProjectType } from '../types';
 import ProjectCard from './ProjectCard.astro';
+import { projectStore, updatedProjects } from '../store/project';
+import { minutesDifference } from '../utils/time';
 
-const projects: ProjectType[] = await db.select().from(Project)
+if (projectStore.get().projects.length === 0 || minutesDifference(projectStore.get().last_update, new Date(), 10)) {
+  const projectDB: ProjectType[] = await db.select().from(Project)
+  updatedProjects(projectDB)
+}
+
+const projects = projectStore.get().projects
 projects.sort((a, b) => a.order - b.order)
 ---
 

@@ -1,5 +1,7 @@
 ---
 import { githubContributions } from 'github-calendar-json';
+import { contributionStore, updatedContribution } from '../store/contribution';
+import { minutesDifference } from '../utils/time';
 
 interface HeaderMonth {
   month?: string
@@ -19,9 +21,15 @@ const getHeaderMonths = (months: string[]): HeaderMonth[] => {
   return headers
 }
 
-const contributions = await githubContributions('Unnunoctio', { cache: 'no-cache' })
+if (contributionStore.get().contributions === null || minutesDifference(contributionStore.get().last_update, new Date(), 10)) {
+  const contributionsDB = await githubContributions('Unnunoctio', { cache: 'no-cache' })
+  updatedContribution(contributionsDB)
+}
+
+const contributions = contributionStore.get().contributions 
+
 const headerDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
-const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?.date.toLocaleString('es-US', { month: 'short' })) as string[])
+const headerMonths = getHeaderMonths(contributions?.calendar[0].map((col) => col?.date.toLocaleString('es-US', { month: 'short' })) as string[])
 ---
 
 <section id="github-calendar" class="mt-32">
@@ -41,7 +49,7 @@ const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?
               </tr>
             </thead>
             <tbody>
-              {contributions.calendar.map((days, index) => (
+              {contributions?.calendar.map((days, index) => (
                 <tr class='h-[12px]'>
                   <th class='relative w-[30px] font-medium text-left'>
                     {index % 2 === 1 && (
@@ -74,7 +82,7 @@ const headerMonths = getHeaderMonths(contributions.calendar[0].map((col) => col?
   </div>
   <div class='flex justify-center mt-2'>
     <div class='flex gap-2 md:gap-3 justify-between w-full max-w-[902px]'>
-      <p class='text-[14px] md:text-[16px]'>{contributions.totalContributions} contribuciones en el último año</p>
+      <p class='text-[14px] md:text-[16px]'>{contributions?.totalContributions} contribuciones en el último año</p>
       <div class='flex items-center gap-[2px] md:gap-1'>
         <span class='text-[14px]'>Menos</span>
         <span class='w-[12px] h-[12px] bg-calendar-0 rounded-[2px] outline outline-1 -outline-offset-1 outline-calendar-border' />

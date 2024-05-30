@@ -1,7 +1,10 @@
 ---
 import { db, eq, inArray, Skill, ProjectSkill, Project } from 'astro:db';
 import type { Skill as SkillType } from '../types';
+import { skillStore, updatedSkills } from '../store/skills';
+import { minutesDifference } from '../utils/time';
 import SkillBadge from './SkillBadge.astro';
+import { getProject, projectStore, updateSkillsProject } from '../store/project';
 
 interface Props {
   title: string;
@@ -12,12 +15,22 @@ const { path } = Astro.params;
 
 let skills: SkillType[] = []
 if (path === undefined) {
-  skills = await db.select().from(Skill)
+  if (skillStore.get().skills.length === 0 || minutesDifference(skillStore.get().last_update, new Date(), 10)) {
+    const skillsDB: SkillType[] = await db.select().from(Skill)
+    updatedSkills(skillsDB)
+  }
+  skills = skillStore.get().skills
 } else {
-  const project = (await db.select().from(Project).where(eq(Project.path, path as string)))[0]
-  const skills_id = (await db.select().from(ProjectSkill).where(eq(ProjectSkill.project_id, project.project_id))).map((s) => s.skill_id)
-
-  skills = await db.select().from(Skill).where(inArray(Skill.skill_id, skills_id))
+  let project = getProject(path as string);
+  if (project !== undefined) {
+    if (project.skills.length === 0 || minutesDifference(projectStore.get().last_update, new Date(), 10)) {
+      const skills_id = (await db.select().from(ProjectSkill).where(eq(ProjectSkill.project_id, project.project_id))).map((s) => s.skill_id)
+      const skillsDB = await db.select().from(Skill).where(inArray(Skill.skill_id, skills_id))
+      updateSkillsProject(path, skillsDB)
+      project = getProject(path)
+    }
+    skills = project?.skills as SkillType[]
+  }
 }
 
 skills.sort((a, b) => a.order - b.order)
