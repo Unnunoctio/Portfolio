@@ -1,5 +1,6 @@
 ---
-import { db, eq, Project } from 'astro:db';
+import { db, Project } from 'astro:db';
+import { Image } from 'astro:assets';
 import Layout from "../layouts/Layout.astro";
 import Navbar from '../components/Navbar.astro';
 import ProgressIcon from '../icons/ProgressIcon.astro';
@@ -46,7 +47,8 @@ const { title, logo, website, repository, description, is_ready, github } = proj
       <Navbar />
 
       <div class="mt-24">
-        <img src={logo} alt={title} height={150} class="max-h-[150px]" />
+        {logo !== null && <img src={logo} alt={title} height={150} class="max-h-[150px]" />}
+        {logo === null && <Image src="/projects/without-logo.svg" alt={title} width={432} height={150} class="max-h-[150px]" />}
         {!is_ready &&
           <div class="flex gap-2 mt-4">
             <ProgressIcon style="w-9 h-9 stroke-text-active" />

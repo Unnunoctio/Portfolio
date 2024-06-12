@@ -4,7 +4,7 @@ import type { Skill as SkillType } from '../types';
 import { skillStore, updatedSkills } from '../store/skills';
 import { minutesDifference } from '../utils/time';
 import SkillBadge from './SkillBadge.astro';
-import { getProject, projectStore, updateSkillsProject } from '../store/project';
+import { getProject, updateSkillsProject } from '../store/project';
 
 interface Props {
   title: string;
@@ -25,9 +25,11 @@ if (path === undefined) {
   if (project !== undefined) {
     if (project.skills.length === 0 || minutesDifference(project.skills_update, new Date(), 10)) {
       const skills_id = (await db.select().from(ProjectSkill).where(eq(ProjectSkill.project_id, project.project_id))).map((s) => s.skill_id)
-      const skillsDB = await db.select().from(Skill).where(inArray(Skill.skill_id, skills_id))
-      updateSkillsProject(path, skillsDB)
-      project = getProject(path)
+      if(skills_id.length > 0) {
+        const skillsDB = await db.select().from(Skill).where(inArray(Skill.skill_id, skills_id))
+        updateSkillsProject(path, skillsDB)
+        project = getProject(path)
+      }
     }
     skills = project?.skills as SkillType[]
   }
@@ -39,9 +41,10 @@ skills.sort((a, b) => a.order - b.order)
 <div class="mt-16 p-4 w-full max-w-skill-box bg-bg-skills rounded-2xl shadow-skills"> 
   <h2 class="text-2xl">{title}</h2>
   <ul class="flex flex-wrap gap-3 mt-4">
-    {skills.map(skill => (
+    {skills.length > 0 && skills.map(skill => (
       <li><SkillBadge {...skill} /></li>
     ))}
+    {skills.length === 0 && <li><SkillBadge skill_id={0} order={1} lang='Sin Habilidades' color='#8B5CF6' /></li>}
   </ul>
 </div>
 
