@@ -19,9 +19,9 @@ import ContactModal from "./ContactModal.astro";
     <div class="divide-y divide-divider-component">
       <h3 class="text-lg text-text-primary font-medium px-5 py-4 select-none">Rafael Carvacho <span class="text-text-active">#WEB</span></h3>
       <ul class="flex flex-col gap-3 p-5">
-        <li><AboutModal /></li>
-        <li><ResumeModal /></li>
-        <li><ContactModal /></li>
+        <li><AboutModal server:defer /></li>
+        <li><ResumeModal server:defer /></li>
+        <li><ContactModal server:defer /></li>
       </ul>
     </div>
   </section>
