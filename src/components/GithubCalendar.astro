@@ -1,7 +1,5 @@
 ---
 import { githubContributions } from 'github-calendar-json';
-import { contributionStore, updatedContribution } from '../store/contribution';
-import { minutesDifference } from '../utils/time';
 
 interface HeaderMonth {
   month?: string
@@ -21,12 +19,7 @@ const getHeaderMonths = (months: string[]): HeaderMonth[] => {
   return headers
 }
 
-if (contributionStore.get().contributions === null || minutesDifference(contributionStore.get().last_update, new Date(), 10)) {
-  const contributionsDB = await githubContributions('Unnunoctio', { cache: 'no-cache' })
-  updatedContribution(contributionsDB)
-}
-
-const contributions = contributionStore.get().contributions 
+const contributions = await githubContributions('Unnunoctio', { cache: 'no-cache' })
 
 const headerDays = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
 const headerMonths = getHeaderMonths(contributions?.calendar[0].map((col) => col?.date.toLocaleString('es-US', { month: 'short' })) as string[])
