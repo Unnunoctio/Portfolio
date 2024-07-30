@@ -8,6 +8,7 @@ import GithubCalendar from "../components/GithubCalendar.astro";
 import Navbar from "../components/Navbar.astro";
 import ProjectList from "../components/ProjectList.astro";
 import GithubCalendarSkeleton from "../skeletons/GithubCalendarSkeleton.astro";
+import ProjectListSkeleton from "../skeletons/ProjectListSkeleton.astro";
 ---
 
 <Layout title="Rafael Carvacho | Portafolio">
@@ -25,7 +26,9 @@ import GithubCalendarSkeleton from "../skeletons/GithubCalendarSkeleton.astro";
     <section id="projects" class="flex flex-col items-center w-full bg-bg-secondary min-h-[80vh]">
       <div class="my-24 w-full max-w-page px-4 sm:px-6 md:px-8 lg:px-[112px]">
         <h2 class="text-5xl font-medium">Mis Proyectos</h2>
-        <ProjectList />
+        <ProjectList server:defer>
+          <ProjectListSkeleton slot="fallback" skeleton_items={6} />
+        </ProjectList>
 				<GithubCalendar server:defer>
           <GithubCalendarSkeleton slot="fallback" />
         </GithubCalendar>
