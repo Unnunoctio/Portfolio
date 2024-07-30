@@ -38,7 +38,7 @@ if (project.github === null || minutesDifference(project.github_update, new Date
   project = getProject(path as string)
 }
 
-const { title, logo, website, repository, description, is_ready, github } = project as ProjectComplete;
+const { project_id ,title, logo, website, repository, description, is_ready, github } = project as ProjectComplete;
 ---
 
 <Layout title={`${title} | Proyectos`}>
@@ -57,7 +57,7 @@ const { title, logo, website, repository, description, is_ready, github } = proj
         }
       </div>
 
-      <SkillBox title='Habilidades' />
+      <SkillBox title='Habilidades' project_id={project_id} />
 
       {description !== null && <p class="mt-16 w-full max-w-[600px] text-xl text-text-secondary text-pretty">{description}</p>}
 
