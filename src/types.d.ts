@@ -35,13 +35,6 @@ export interface GithubData {
   watchers: number
 }
 
-export interface ProjectComplete extends Project {
-  skills: Skill[],
-  skills_update: Date,
-  github: GithubData | null
-  github_update: Date
-}
-
 export interface Resume {
   resume_id: number
   code: string

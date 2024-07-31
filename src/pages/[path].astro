@@ -8,37 +8,19 @@ import SkillBox from '../components/SkillBox.astro';
 import ProjectInfo from '../components/ProjectInfo.astro';
 import GithubIcon from '../icons/GithubIcon.astro';
 import LinkIcon from '../icons/LinkIcon.astro';
-import StarIcon from '../icons/StarIcon.astro';
-import ForkIcon from '../icons/ForkIcon.astro';
-import WatcherIcon from '../icons/WatcherIcon.astro';
-import ProjectDetail from '../components/ProjectDetail.astro';
-import { getProject, projectStore, updatedProjects, updateGithubProject } from '../store/project';
-import type { ProjectComplete, Project as ProjectType } from '../types';
-import { minutesDifference } from '../utils/time';
+import type { Project as ProjectType } from '../types';
+import ProjectGithub from '../components/ProjectGithub.astro';
+import ProjectGithubSkeleton from '../skeletons/ProjectGithubSkeleton.astro';
 
 const { path } = Astro.params;
 
-// Obtiene el projecto desde la store, si no existe actualiza los proyectos desde la base de datos y vuelve a obtener el projecto
-let project = getProject(path as string);
-if (project === undefined || minutesDifference(projectStore.get().last_update, new Date(), 10)) {
-  const projectDB: ProjectType[] = await db.select().from(Project)
-  updatedProjects(projectDB)
-  project = getProject(path as string);
-  if (project === undefined) {
-    return Astro.redirect('/');
-  }
+const projects: ProjectType[] = await db.select().from(Project)
+const project = projects.find(p => p.path === path)
+if (project === undefined) {
+  return Astro.redirect('/')
 }
 
-// Actualizar datos de github (license, stars, watchers, forks)
-if (project.github === null || minutesDifference(project.github_update, new Date(), 10)) {
-  const res = await fetch("https://api.github.com/users/unnunoctio/repos", { headers: { Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}` }, cache: 'no-cache' })
-  const data = await res.json()
-  const repo = data?.find((r: any) => r.id === project?.github_id)
-  updateGithubProject(path as string, { license: repo.license.name, stargazers: repo.stargazers_count, forks: repo.forks, watchers: repo.watchers })
-  project = getProject(path as string)
-}
-
-const { title, logo, website, repository, description, is_ready, github } = project as ProjectComplete;
+const { project_id ,title, logo, website, repository, description, is_ready, github_id } = project;
 ---
 
 <Layout title={`${title} | Proyectos`}>
@@ -46,7 +28,7 @@ const { title, logo, website, repository, description, is_ready, github } = proj
     <section class="relative w-full max-w-page px-4 sm:px-6 md:px-8 lg:px-[112px] pb-14">
       <Navbar />
 
-      <div class="mt-24">
+      <div class="flex flex-col justify-center items-start mt-24 min-h-[150px]">
         {logo !== null && <img src={logo} alt={title} height={150} class="max-h-[150px]" />}
         {logo === null && <Image src="/projects/without-logo.svg" alt={title} width={432} height={150} class="max-h-[150px]" />}
         {!is_ready &&
@@ -57,7 +39,7 @@ const { title, logo, website, repository, description, is_ready, github } = proj
         }
       </div>
 
-      <SkillBox title='Habilidades' />
+      <SkillBox title='Habilidades' project_id={project_id} />
 
       {description !== null && <p class="mt-16 w-full max-w-[600px] text-xl text-text-secondary text-pretty">{description}</p>}
 
@@ -77,18 +59,9 @@ const { title, logo, website, repository, description, is_ready, github } = proj
       </ProjectInfo>
 
       <ProjectInfo title='Detalles Adicionales'>
-        <div class="flex gap-y-2 gap-x-6 justify-between flex-wrap sm:flex-nowrap w-full max-w-[700px]">
-          <ProjectDetail title='LICENCIA' value={github?.license} style='min-w-[109px]' />
-          <ProjectDetail title="STARS" value={github?.stargazers}>
-            <StarIcon style="w-6 h-6 fill-text-primary" />
-          </ProjectDetail>
-          <ProjectDetail title="WATCHERS" value={github?.watchers}>
-            <WatcherIcon style="w-6 h-6 fill-text-primary" />
-          </ProjectDetail>
-          <ProjectDetail title="FORKS" value={github?.forks}>
-            <ForkIcon style="w-6 h-6 fill-text-primary" />
-          </ProjectDetail>
-        </div>
+        <ProjectGithub server:defer github_id={github_id}>
+          <ProjectGithubSkeleton slot='fallback' />
+        </ProjectGithub>
       </ProjectInfo>
     </section>
   </main>

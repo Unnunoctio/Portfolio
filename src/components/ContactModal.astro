@@ -2,15 +2,8 @@
 import { db, Contact } from 'astro:db';
 import type { Contact as ContactType } from '../types';
 import Modal from './Modal.astro';
-import { contactStore, updatedContacts } from '../store/contact';
-import { minutesDifference } from '../utils/time';
 
-if (contactStore.get().contacts.length === 0 || minutesDifference(contactStore.get().last_update, new Date(), 10)) {
-  const contactsDB: ContactType[] = await db.select().from(Contact)
-  updatedContacts(contactsDB)
-}
-
-const contacts = contactStore.get().contacts
+const contacts: ContactType[] = await db.select().from(Contact)
 ---
 
 <Modal buttonTitle='Contacto' modalTitle='Contáctame'>

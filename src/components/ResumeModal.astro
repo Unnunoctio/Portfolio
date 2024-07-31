@@ -1,17 +1,10 @@
 ---
 import { db, Resume } from 'astro:db';
 import type { Resume as ResumeType } from '../types';
-import { resumeStore, updatedResumes } from '../store/resume';
-import { minutesDifference } from '../utils/time';
 import Modal from './Modal.astro';
 import ResumeList from './ResumeList.astro';
 
-if (resumeStore.get().resumes.length === 0 || minutesDifference(resumeStore.get().last_update, new Date(), 10)) {
-  const resumesDB: ResumeType[] = await db.select().from(Resume)
-  updatedResumes(resumesDB)
-}
-
-const resumes = resumeStore.get().resumes
+const resumes: ResumeType[] = await db.select().from(Resume)
 resumes.sort((a, b) => {
   if (a.end_date === null && b.end_date === null) return b.start_date.getTime() - a.start_date.getTime()
   if (a.end_date === null) return -1

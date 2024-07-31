@@ -15,7 +15,8 @@ export default {
 					active: '#4E119D',
 					'active-light': '#8B5CF6',
 					component: '#211F1F',
-					modal: '#141212'
+					modal: '#141212',
+					skeleton: '#525252'
 				},
 				hover: {
 					btn: '#3E3E3EAA',

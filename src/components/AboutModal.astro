@@ -1,16 +1,10 @@
 ---
 import { db, eq, About } from 'astro:db';
 import type { About as AboutType } from '../types';
-import { aboutStore, updatedAbout } from '../store/about';
-import { minutesDifference } from '../utils/time';
 import Modal from './Modal.astro';
 
-if (aboutStore.get().about === null || minutesDifference(aboutStore.get().last_update, new Date(), 10)) {
-  const aboutDB: AboutType[] = await db.select().from(About).where(eq(About.about_id, 1))
-  updatedAbout(aboutDB[0])
-}
-
-const about = aboutStore.get().about
+const abouts: AboutType[] = await db.select().from(About).where(eq(About.about_id, 1))
+const about = abouts[0]
 ---
 
 <Modal buttonTitle='Sobre mí' modalTitle='Sobre mí'>
