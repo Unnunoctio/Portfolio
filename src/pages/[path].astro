@@ -29,8 +29,8 @@ const { project_id ,title, logo, website, repository, description, is_ready, git
       <Navbar />
 
       <div class="flex flex-col justify-center items-start mt-24 min-h-[150px]">
-        {logo !== null && <img src={logo} alt={title} height={150} class="max-h-[150px]" />}
-        {logo === null && <Image src="/projects/without-logo.svg" alt={title} width={432} height={150} class="max-h-[150px]" />}
+        {logo !== null && <img src={logo} alt={title} height={150} loading="lazy" class="max-h-[150px]" />}
+        {logo === null && <Image src="/projects/without-logo.svg" alt={title} width={432} height={150} loading="lazy" class="max-h-[150px]" />}
         {!is_ready &&
           <div class="flex gap-2 mt-4">
             <ProgressIcon style="w-9 h-9 stroke-text-active" />
