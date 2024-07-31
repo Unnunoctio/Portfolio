@@ -19,7 +19,6 @@
     "alpinejs": "3.14.0",
     "astro": "4.12.2",
     "github-calendar-json": "2.2.0",
-    "nanostores": "0.10.3",
     "tailwindcss": "3.4.3",
     "typescript": "5.4.5"
   }
